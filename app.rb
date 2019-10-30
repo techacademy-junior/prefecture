@@ -3,16 +3,13 @@ require 'sinatra'
 get '/' do
 
   if !params[:keyword].nil? && !params[:keyword].empty?
-    # ここにコードを入力してください。
-	  @keyword = params[:keyword]
-	  a = @keyword.length
-	  b = @keyword.index("県") || 0
-	  c = @keyword.index("市") || 0
-	  @prefecture = @keyword[0,b+1]
-	  @city = @keyword[b+1,c-b]
-    # ここまでコードを入力して下さい。
+	  keyword = params[:keyword]
+	  a = keyword.length
+	  b = keyword.index(/都|道|府|県/) || 0
+	  c = keyword.index("市") || 0
+	  @prefecture = ""#ここにコードを書いてみよう
+		@prefecture = "" if @prefecture.size == 1
+	  @city = ""#ここにコードを書いてみよう
   end
   erb :index
 end
-
-# Lesson3変数を使ってプログラミング
